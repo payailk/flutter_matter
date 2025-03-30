@@ -1,7 +1,7 @@
 name: flutter_matter
 description: "A new Flutter plugin project."
 version: 0.0.1
-homepage:
+homepage: https://github.com/Tan-yi-xiong/flutter_matter
 
 environment:
   sdk: '>=3.3.3 <4.0.0'
@@ -9,6 +9,7 @@ environment:
 
 dependencies:
   basic_utils: ^5.7.0
+  collection: ^1.18.0
   flutter:
     sdk: flutter
   pem: ^2.0.5

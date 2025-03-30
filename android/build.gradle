@@ -18,6 +18,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://jitpack.io' }
     }
 }
 
@@ -52,6 +53,8 @@ android {
 
     dependencies {
         implementation fileTree(dir: "libs", include: ["*.jar", "*.so"])
+        implementation 'com.github.Tan-yi-xiong:flutter_matter_android_prefixed:1.0.1'
+        // implementation 'com.tyx.flutter_matter:flutter_matter_android_prefixed:1.0.0'
         testImplementation 'org.jetbrains.kotlin:kotlin-test'
         testImplementation 'org.mockito:mockito-core:5.0.0'
     }
