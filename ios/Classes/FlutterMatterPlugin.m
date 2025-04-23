@@ -1,6 +1,6 @@
 #import "FlutterMatterPlugin.h"
 #include <Foundation/Foundation.h>
-#import <Matter/Matter.h>
+#import <ZGMatter/ZGMatter.h>
 #import "Constants.h"
 #import "DeviceControlHandle.h"
 #import "DefaultsUtils.h"
@@ -23,7 +23,7 @@
  [Global setBackgroundSerialQueue:dispatch_queue_create("Matter Thread queue", DISPATCH_QUEUE_SERIAL)];
     
  // 初始化库,
- InitializeMTR();
+ InitializeZGMTR();
 }
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {

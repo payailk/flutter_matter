@@ -19,7 +19,10 @@ A new Flutter plugin project.
   s.platform = :ios, '11.0'
 
 
-  s.vendored_frameworks = "frameworks/Matter.framework"
+  s.vendored_frameworks = "frameworks/ZGMatter.framework"
+  # s.vendored_frameworks = "frameworks/ZGMtr.framework"
+  # s.vendored_frameworks = "frameworks/FuckApple.framework"
+  # s.vendored_frameworks = "frameworks/FuckAppleApp.framework"
 
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }

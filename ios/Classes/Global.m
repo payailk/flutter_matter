@@ -13,11 +13,11 @@ static FlutterMethodChannel* _channel = nil;
 }
 
 + (void)setBackgroundSerialQueue:(dispatch_queue_t)queue {
-    if (_backgroundSerialQueue != nil) {
-        @throw  [NSException exceptionWithName:@"setBackgroundSerialQueueException"
-                                                reason:@"backgroundSerialQueue has been set"
-                                              userInfo:nil];
-    }
+    // if (_backgroundSerialQueue != nil) {
+    //     @throw  [NSException exceptionWithName:@"setBackgroundSerialQueueException"
+    //                                             reason:@"backgroundSerialQueue has been set"
+    //                                           userInfo:nil];
+    // }
     _backgroundSerialQueue = queue;
 }
 
@@ -26,11 +26,11 @@ static FlutterMethodChannel* _channel = nil;
 }
 
 + (void)setExternalChannel:(FlutterMethodChannel *)externalChannel {
-    if (_channel != nil) {
-        @throw  [NSException exceptionWithName:@"setFlobalExternalChannelException"
-                                                reason:@"externalChannel has been set"
-                                              userInfo:nil];
-    }
+    // if (_channel != nil) {
+    //     @throw  [NSException exceptionWithName:@"setFlobalExternalChannelException"
+    //                                             reason:@"externalChannel has been set"
+    //                                           userInfo:nil];
+    // }
     _channel = externalChannel;
 }
 

@@ -16,32 +16,32 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <Matter/Matter.h>
+#import <ZGMatter/ZGMatter.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-extern NSString * const MTRToolDefaultsDomain;
+extern NSString * const ZGMTRToolDefaultsDomain;
 extern NSString * const kNetworkSSIDDefaultsKey;
 extern NSString * const kNetworkPasswordDefaultsKey;
 extern NSString * const kFabricIdKey;
 
-MTRDeviceController * _Nullable InitializeMTR(void);
-MTRDeviceController * _Nullable MTRRestartController(MTRDeviceController * controller);
-id _Nullable MTRGetDomainValueForKey(NSString * domain, NSString * key);
-BOOL MTRSetDomainValueForKey(NSString * domain, NSString * key, id _Nullable value);
-void MTRRemoveDomainValueForKey(NSString * domain, NSString * key);
-uint64_t MTRGetNextAvailableDeviceID(void);
+ZGMTRDeviceController * _Nullable InitializeZGMTR(void);
+ZGMTRDeviceController * _Nullable ZGMTRRestartController(ZGMTRDeviceController * controller);
+id _Nullable ZGMTRGetDomainValueForKey(NSString * domain, NSString * key);
+BOOL ZGMTRSetDomainValueForKey(NSString * domain, NSString * key, id _Nullable value);
+void ZGMTRRemoveDomainValueForKey(NSString * domain, NSString * key);
+uint64_t ZGMTRGetNextAvailableDeviceID(void);
 NSString * KeyForPairedDevice(uint64_t id);
-uint64_t MTRGetLastPairedDeviceId(void);
-void MTRSetNextAvailableDeviceID(uint64_t id);
-void MTRSetDevicePaired(uint64_t id, BOOL paired);
-BOOL MTRIsDevicePaired(uint64_t id);
-BOOL MTRGetConnectedDevice(MTRDeviceConnectionCallback completionHandler);
-BOOL MTRGetConnectedDeviceWithID(uint64_t deviceId, MTRDeviceConnectionCallback completionHandler);
-void MTRUnpairDeviceWithID(uint64_t deviceId);
-MTRBaseDevice * _Nullable MTRGetDeviceBeingCommissioned(void);
+uint64_t ZGMTRGetLastPairedDeviceId(void);
+void ZGMTRSetNextAvailableDeviceID(uint64_t id);
+void ZGMTRSetDevicePaired(uint64_t id, BOOL paired);
+BOOL ZGMTRIsDevicePaired(uint64_t id);
+BOOL ZGMTRGetConnectedDevice(ZGMTRDeviceConnectionCallback completionHandler);
+BOOL ZGMTRGetConnectedDeviceWithID(uint64_t deviceId, ZGMTRDeviceConnectionCallback completionHandler);
+void ZGMTRUnpairDeviceWithID(uint64_t deviceId);
+ZGMTRBaseDevice * _Nullable ZGMTRGetDeviceBeingCommissioned(void);
 
-@interface CHIPToolPersistentStorageDelegate : NSObject <MTRPersistentStorageDelegate>
+@interface CHIPToolPersistentStorageDelegate : NSObject <ZGMTRPersistentStorageDelegate>
 - (nullable NSData *)storageDataForKey:(NSString *)key;
 - (BOOL)setStorageData:(NSData *)value forKey:(NSString *)key;
 - (BOOL)removeStorageDataForKey:(NSString *)key;

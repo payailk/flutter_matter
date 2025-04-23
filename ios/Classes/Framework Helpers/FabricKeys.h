@@ -17,7 +17,7 @@
 #pragma once
 
 #import <Foundation/Foundation.h>
-#import <Matter/Matter.h>
+#import <ZGMatter/ZGMatter.h>
 
 /**
  * Management of the CA key and IPK for our fabric.
@@ -25,7 +25,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface FabricKeys : NSObject <MTRKeypair>
+@interface FabricKeys : NSObject <ZGMTRKeypair>
 
 @property (readonly, nonatomic, strong) NSData * ipk;
 

@@ -2,10 +2,10 @@
 
 
 #import <Foundation/Foundation.h>
-#import <Matter/Matter.h>
+#import <ZGMatter/ZGMatter.h>
 
 
-@interface DeviceAttestationDelegate : NSObject <MTRDeviceAttestationDelegate>
+@interface DeviceAttestationDelegate : NSObject <ZGMTRDeviceAttestationDelegate>
 
 @property (nonatomic, strong) NSString *handle;
 

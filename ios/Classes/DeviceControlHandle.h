@@ -1,7 +1,7 @@
 #import <Flutter/Flutter.h>
-#import <Matter/Matter.h>
+#import <ZGMatter/ZGMatter.h>
 
-@interface KeypairWarp : NSObject <MTRKeypair>
+@interface KeypairWarp : NSObject <ZGMTRKeypair>
 
 @property (nonatomic, strong) NSString *handle;
 
@@ -9,7 +9,7 @@
 
 @end
 
-@interface MTRNOCChainIssuerWarp : NSObject <MTRNOCChainIssuer>
+@interface ZGMTRNOCChainIssuerWarp : NSObject <ZGMTRNOCChainIssuer>
 
 @property (nonatomic, strong) NSString *handle;
 
@@ -17,14 +17,14 @@
 
 @end
 
-@interface PairingDelegateWarp : NSObject<MTRDevicePairingDelegate>
+@interface PairingDelegateWarp : NSObject<ZGMTRDevicePairingDelegate>
 
 @property (nonatomic, strong) NSString *handle;
-@property (nonatomic, strong) MTRCommissioningParameters *commissioningParameters;
-@property (nonatomic, strong) MTRDeviceController *deviceController;
+@property (nonatomic, strong) ZGMTRCommissioningParameters *commissioningParameters;
+@property (nonatomic, strong) ZGMTRDeviceController *deviceController;
 @property (nonatomic, strong) NSNumber *deviceId;
 
-- (instancetype)initWithHandle:(NSString *)handle commissioningParameters:(MTRCommissioningParameters *)commissioningParameters deviceController:(MTRDeviceController *)deviceController deviceId:(NSNumber *)deviceId;
+- (instancetype)initWithHandle:(NSString *)handle commissioningParameters:(ZGMTRCommissioningParameters *)commissioningParameters deviceController:(ZGMTRDeviceController *)deviceController deviceId:(NSNumber *)deviceId;
 
 @end
 

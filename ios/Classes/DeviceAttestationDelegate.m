@@ -3,12 +3,13 @@
 #import "Utiles.h"
 #import "Global.h"
 #import "Constants.h"
+#import <ZGMatter/ZGMatter.h>
 
 @implementation DeviceAttestationDelegate
 
-- (void)deviceAttestationCompletedForController:(MTRDeviceController *)controller
+- (void)deviceAttestationCompletedForController:(ZGMTRDeviceController *)controller
                              opaqueDeviceHandle:(void *)opaqueDeviceHandle
-                          attestationDeviceInfo:(MTRDeviceAttestationDeviceInfo *)attestationDeviceInfo
+                          attestationDeviceInfo:(ZGMTRDeviceAttestationDeviceInfo *)attestationDeviceInfo
                                           error:(NSError * _Nullable)error
 {
     NSString *p = createFlutterCallPath(deviceControllerHost, @"DeviceAttestationDelegate/onDeviceAttestationCompleted");

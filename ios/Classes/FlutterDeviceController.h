@@ -1,18 +1,18 @@
 
 #import "FlutterControllerParams.h"
 #import <Foundation/Foundation.h>
-#import <Matter/Matter.h>
+#import <ZGMatter/ZGMatter.h>
 
 @interface FlutterDeviceController : NSObject
-@property(nonatomic, strong) MTRDeviceController *controller;
+@property(nonatomic, strong) ZGMTRDeviceController *controller;
 @property(nonatomic, strong) FlutterControllerParams *controllerParams;
 
-- (void)addConnectedDeviceWithNodeID:(uint64_t)nodeID deviceInfo:(MTRBaseDevice *)deviceInfo;
+- (void)addConnectedDeviceWithNodeID:(uint64_t)nodeID deviceInfo:(ZGMTRBaseDevice *)deviceInfo;
 - (void)removeDeviceWithNodeID:(uint64_t)nodeID;
-- (nullable MTRBaseDevice *)deviceInfoForNodeID:(uint64_t)nodeID;
+- (nullable ZGMTRBaseDevice *)deviceInfoForNodeID:(uint64_t)nodeID;
 
 
-- (instancetype)initWithController:(nonnull MTRDeviceController *)controller
+- (instancetype)initWithController:(nonnull ZGMTRDeviceController *)controller
                   controllerParams:(nonnull FlutterControllerParams *)controllerParams;
 
 @end

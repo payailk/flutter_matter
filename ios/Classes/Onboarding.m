@@ -1,15 +1,15 @@
 
 #include "Onboarding.h"
-#include "Matter/Matter.h"
+#include "ZGMatter/ZGMatter.h"
 #include "Utiles.h"
 #include "Global.h"
 
 static NSString *parseManualPairingCode(NSString *params) {
     NSDictionary *jsonObject = parseJSONString(params);
     NSString *decimalString = requestJsonValueNotNull(jsonObject, @"pairingCode");
-    MTRManualSetupPayloadParser * parser = [[MTRManualSetupPayloadParser alloc] initWithDecimalStringRepresentation:decimalString];
+    ZGMTRManualSetupPayloadParser * parser = [[ZGMTRManualSetupPayloadParser alloc] initWithDecimalStringRepresentation:decimalString];
     NSError * error;
-    MTRSetupPayload *setupPayload = [parser populatePayload:&error];
+    ZGMTRSetupPayload *setupPayload = [parser populatePayload:&error];
     if (setupPayload == nil) {
         return createFlutterRequestResultWithCode(1, @{});
     }
@@ -28,9 +28,9 @@ static NSString *parseManualPairingCode(NSString *params) {
 static NSString *parseQrCode(NSString *params) {
     NSDictionary *jsonObject = parseJSONString(params);
     NSString *qrCode = requestJsonValueNotNull(jsonObject, @"qrCode");
-    MTRQRCodeSetupPayloadParser * parser = [[MTRQRCodeSetupPayloadParser alloc] initWithBase38Representation:qrCode];
+    ZGMTRQRCodeSetupPayloadParser * parser = [[ZGMTRQRCodeSetupPayloadParser alloc] initWithBase38Representation:qrCode];
     NSError * error;
-    MTRSetupPayload *setupPayload = [parser populatePayload:&error];
+    ZGMTRSetupPayload *setupPayload = [parser populatePayload:&error];
     if (setupPayload == nil) {
         return createFlutterRequestResultWithCode(1, @{});
     }

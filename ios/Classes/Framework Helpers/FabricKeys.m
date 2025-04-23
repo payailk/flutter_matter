@@ -23,8 +23,8 @@
 @property (readonly) SecKeyRef publicKey;
 @end
 
-static const NSString * MTRIPKKeyChainLabel = @"matter-tool.nodeopcerts.IPK:0";
-static const NSString * MTRCAKeyChainLabel = @"matter-tool.nodeopcerts.CA:0";
+static const NSString * ZGMTRIPKKeyChainLabel = @"matter-tool.nodeopcerts.IPK:0";
+static const NSString * ZGMTRCAKeyChainLabel = @"matter-tool.nodeopcerts.CA:0";
 
 @implementation FabricKeys
 
@@ -32,7 +32,7 @@ static const NSString * MTRCAKeyChainLabel = @"matter-tool.nodeopcerts.CA:0";
 {
     return @{
         (__bridge NSString *) kSecClass : (__bridge NSString *) kSecClassKey,
-        (__bridge NSString *) kSecAttrApplicationLabel : MTRIPKKeyChainLabel,
+        (__bridge NSString *) kSecAttrApplicationLabel : ZGMTRIPKKeyChainLabel,
         (__bridge NSString *) kSecAttrKeyClass : (__bridge NSString *) kSecAttrKeyClassSymmetric,
     };
 }
@@ -95,7 +95,7 @@ static const NSString * MTRCAKeyChainLabel = @"matter-tool.nodeopcerts.CA:0";
 {
     return @{
         (__bridge NSString *) kSecClass : (__bridge NSString *) kSecClassKey,
-        (__bridge NSString *) kSecAttrApplicationLabel : MTRCAKeyChainLabel,
+        (__bridge NSString *) kSecAttrApplicationLabel : ZGMTRCAKeyChainLabel,
         // We're storing a base-64 encoding of some opaque thing that represents
         // our keypair.  It's not really a public or private key; claim it's a
         // symmetric key.
