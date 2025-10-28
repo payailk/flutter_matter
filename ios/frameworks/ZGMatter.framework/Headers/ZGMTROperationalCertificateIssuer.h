@@ -125,7 +125,7 @@ ZGMTR_DEPRECATED(
 @required
 
 - (void)onNOCChainGenerationNeeded:(CSRInfo *)csrInfo
-                   attestationInfo:(AttestationInfo *)attestationInfo
+                   attestationInfo:(ZGAttestationInfo *)attestationInfo
       onNOCChainGenerationComplete:(ZGMTRNOCChainGenerationCompleteHandler)onNOCChainGenerationComplete;
 
 @end

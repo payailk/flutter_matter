@@ -81,8 +81,8 @@ ZGMTR_AVAILABLE(ios(16.4), macos(13.3), watchos(9.4), tvos(16.4))
 
 @end
 
-ZGMTR_DEPRECATED("Please use MTRDeviceAttestationInfo", ios(16.1, 16.4), macos(13.0, 13.3), watchos(9.1, 9.4), tvos(16.1, 16.4))
-@interface AttestationInfo : NSObject
+ZGMTR_DEPRECATED("Please use ZGMTRDeviceAttestationInfo", ios(16.1, 16.4), macos(13.0, 13.3), watchos(9.1, 9.4), tvos(16.1, 16.4))
+@interface ZGAttestationInfo : NSObject
 
 @property (nonatomic, copy) NSData * challenge;
 

@@ -191,7 +191,7 @@ static dispatch_queue_t connectDeviceQueue = nil;
 @implementation ZGMTRNOCChainIssuerWarp
 
 - (void)onNOCChainGenerationNeeded:(CSRInfo *)csrInfo
-                   attestationInfo:(AttestationInfo *)attestationInfo
+                   attestationInfo:(ZGAttestationInfo *)attestationInfo
       onNOCChainGenerationComplete:(ZGMTRNOCChainGenerationCompleteHandler)onNOCChainGenerationComplete {
     FlutterMatterLog([[NSString alloc]
         initWithFormat:@"%@ KeypairDelegate.signMessageECDSA_DER call",
