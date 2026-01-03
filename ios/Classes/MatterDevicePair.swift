@@ -25,10 +25,10 @@ import Matter
             do {
                 
                 // vendorID == 0 && productID == 0 is share Device
-                if (request.setupPayload?.vendorID == 0 && request.setupPayload?.productID == 0) {
-                    completion(onboardingPayload, nil)
-                    return
-                }
+//                if (request.setupPayload?.vendorID == 0 && request.setupPayload?.productID == 0) {
+//                    completion(onboardingPayload, nil)
+//                    return
+//                }
                 
                 try await request.perform()
                 let appGroupId = Bundle.main.object(forInfoDictionaryKey: "AppGroupId")
