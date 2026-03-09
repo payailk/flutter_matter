@@ -1,6 +1,7 @@
 
 import 'dart:convert';
 
+import 'package:collection/collection.dart';
 import 'package:flutter_matter/flutter_matter_method_channel.dart';
 import 'package:flutter_matter/flutter_matter_platform_interface.dart';
 
@@ -9,9 +10,13 @@ import 'exception.dart';
 const String onboardingPayloadHost = 'Onboarding';
 
 enum DiscoveryCapability {
-  soft_ap,
-  ble,
-  on_network
+  soft_ap(1),
+  ble(2),
+  on_network(3);
+
+  final int value;
+
+  const DiscoveryCapability(this.value);
 }
 
 class OnboardingPayload {
@@ -54,7 +59,7 @@ class OnboardingPayload {
       discriminator: json["discriminator"],
       setupPinCode: json["setupPinCode"],
       hasShortDiscriminator: json["hasShortDiscriminator"],
-      discoveryCapabilities: (json["discoveryCapabilities"] as List).map((e) => DiscoveryCapability.values[e]).toSet()
+      discoveryCapabilities: (json["discoveryCapabilities"] as List).map((e) => DiscoveryCapability.values.firstWhereOrNull((element) => element.value == e)).whereNotNull().toSet()
     );
   }
 }
