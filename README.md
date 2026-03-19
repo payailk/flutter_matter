@@ -5,12 +5,17 @@
 ![](images/demo.gif)
 
 ## Features
-- Provisioning，安卓可以使用自己的Gatt代码连接和发送matter的配网数据
-- Attribute Read
-- Attribute Write
-- Attribute Subscribe
-- Invoke
-- 使用最底层的tlv拼装数据, 为开发提供强大的灵活性
+
+- **Provisioning** — BLE and on-network commissioning. On Android you can supply your own GATT code to connect and send Matter commissioning data.
+- **Thread network support** — Pass a Thread Active Operational Dataset via `NetworkCredentials.thread(ThreadCredentials(...))`.
+- **ICD (Intermittently Connected Devices)** — Matter 1.2+ ICD commissioning is now fully supported via `CompletionListener.onICDRegistrationComplete`.
+- **Attribute Read** — Read any attribute from any cluster.
+- **Attribute Write** — Write any attribute to any cluster.
+- **Attribute / Event Subscribe** — Subscribe with optional `DataVersionFilter` for efficient change-only updates.
+- **Invoke** — Send commands to any cluster endpoint.
+- **Unpair** — Remove a device from the fabric with `unPairDevice(nodeId)`.
+- **TLV** — Full TLV read/write stack for maximum low-level flexibility.
+- **Cluster helpers** — Convenience wrappers for `BasicInformationCluster` and `DescriptorCluster`.
 
 ## Getting Started
 
