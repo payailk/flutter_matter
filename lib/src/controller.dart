@@ -1297,22 +1297,6 @@ class ChipDeviceController implements MethodCallHandler {
     return false;
   }
 
-  /// Removes a device from the fabric by [nodeId].
-  ///
-  /// This is equivalent to "unpair" and will erase the device's fabric
-  /// credentials. Returns `true` on success, `false` on failure.
-  Future<bool> unPairDevice(int nodeId) async {
-    try {  
-      final result = await _requestPlatform('unPairDevice', jsonEncode({
-        jsonKeyHandle: _platformDeviceControllerHandle,
-        'nodeId': nodeId,
-      }));
-      return result?['data'] == true;
-    } catch (e) {
-      return false;
-    }
-  }
-
   Future<int?> getFabricIndex() async {
     try {
       final result = await _requestPlatform('getFabricIndex', jsonEncode({

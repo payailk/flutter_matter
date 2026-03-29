@@ -83,7 +83,7 @@ private fun ICDDeviceInfo.toJSONObject(): JSONObject {
     return JSONObject(mapOf(
         "symmetricKey" to JSONArray(symmetricKey.nullToEmpty()),
         "userActiveModeTriggerHint" to JSONArray(userActiveModeTriggerHint.map { it.bitIndex }),
-        "userActiveModeTriggerInstruction" to JSONArray(userActiveModeTriggerInstruction),
+        "userActiveModeTriggerInstruction" to userActiveModeTriggerInstruction,
         "icdNodeId" to icdNodeId,
         "icdCounter" to icdCounter,
         "monitoredSubject" to monitoredSubject,
@@ -241,9 +241,6 @@ fun onDeviceControlCall(path: String, params: String, result: MethodChannel.Resu
                 }
                 "/openPairingWindowWithPIN" -> {
                     callResultSuccess(openPairingWindowWithPIN(params))
-                }
-                "/unPairDevice" -> {
-                    callResultSuccess(unPairDevice(params))
                 }
                 "/getFabricIndex" -> {
                     callResultSuccess(getFabricIndex(params))
@@ -1074,7 +1071,7 @@ fun read(params: String): String {
     val attributePathsJson = jsonObject.optJSONArray("attributePaths")
     val eventPathsJson = jsonObject.optJSONArray("eventPaths")
     val connectDevicePointer = jsonObject.opt("connectContext")
-//    val dataVersionFilters = jsonObject.opt("dataVersionFilters")
+    val dataVersionFiltersJson = jsonObject.optJSONArray("dataVersionFilters")
     val isFabricFiltered = jsonObject.opt("isFabricFiltered") == true
     val imTimeoutMs = jsonObject.opt("imTimeoutMs")?.toString()?.toIntOrNull()
     val eventMin = jsonObject.opt("eventMin")?.toString()?.toLongOrNull()
@@ -1091,6 +1088,17 @@ fun read(params: String): String {
         eventPaths = ArrayList()
         for (i in 0 until eventPathsJson.length()) {
             eventPaths.add(mapChipEventPath(eventPathsJson.optJSONObject(i)))
+        }
+    }
+    var dataVersionFilters: ArrayList<chip.devicecontroller.model.DataVersionFilter>? = null
+    if (dataVersionFiltersJson != null && dataVersionFiltersJson != JSONObject.NULL) {
+        dataVersionFilters = ArrayList()
+        for (i in 0 until dataVersionFiltersJson.length()) {
+            val obj = dataVersionFiltersJson.optJSONObject(i)
+            val endpointId = obj.optJSONObject("endpointId")?.optInt("id") ?: 0
+            val clusterId = obj.optJSONObject("clusterId")?.optInt("id") ?: 0
+            val dataVersion = obj.optInt("dataVersion", 0)
+            dataVersionFilters.add(chip.devicecontroller.model.DataVersionFilter.newInstance(endpointId, clusterId.toLong(), dataVersion.toLong()))
         }
     }
     val reportCallback = object : ReportCallback {
