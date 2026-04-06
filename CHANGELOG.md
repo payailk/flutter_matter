@@ -1,4 +1,4 @@
-## 0.0.7
+## 0.0.8
 
 ### New Features
 - **ICD (Intermittently Connected Device) support** — Matter 1.2+
@@ -16,8 +16,12 @@
 ### Improvements
 - **`DataVersionFilter` support in `subscribe()`** — The `dataVersionFilters` parameter is no longer ignored. Both the Dart method signature and the Android native layer now parse, pass, and forward the filter list to `subscribeToPath`, enabling efficient change-only subscriptions.
 - **Additional public exports** — `ChipEventPath`, `DataVersionFilter`, and `ICDDeviceInfo` are now exported from `package:flutter_matter/flutter_matter.dart` so consumers can construct them directly without importing internal paths.
+- **Android package rename** — Updated the Android plugin package/group/namespace from `com.zengge.flutter_matter` to `com.tyx.flutter_matter`.
+- **Example lockfile handling** — Stopped tracking `example/pubspec.lock` and added it to `.gitignore` to avoid noisy example dependency lockfile diffs in plugin commits.
 
 ### Bug Fixes & Analysis Cleanup
+- Fixed `eventPaths` parsing in iOS `subscribe()` and `readRequest()` so event path payloads are read from the correct request field.
+- Expanded the Dart `subscribe()` / `read()` API docs and clarified that `dataVersionFilters` is currently supported on Android only.
 - Removed unused imports: `dart:ffi` (controller.dart), `dart:collection` (node_state.dart), `dart:typed_data` (tlv_types.dart), `flutter/widgets.dart` (ble.dart), and several unused imports across the example app.
 - Removed 7 unused `result` local variable assignments in `ble.dart` GATT handler methods.
 - Fixed stale `@override` annotation on `onCloseBleComplete()` in the example app (method was removed from the `CompletionListener` interface).
