@@ -916,7 +916,7 @@ static NSString * subscribe(NSString * params) {
    NSString *callbackId = requestJsonValueNotNull(jsonObject, @"callbackHandle");
    NSNumber *nodeId = requestJsonValueNotNull(jsonObject, @"nodeId");
    NSArray * attributePathsJson = [jsonObject objectForKey:@"attributePaths"];
-   NSArray * eventPathsJson = [jsonObject objectForKey:@"eventPathsJson"];
+   NSArray * eventPathsJson = [jsonObject objectForKey:@"eventPaths"];
    NSNumber * minInterval = requestJsonValueNotNull(jsonObject, @"minInterval");
    NSNumber * maxInterval = requestJsonValueNotNull(jsonObject, @"maxInterval");
    NSArray * dataVersionFiltersJson = [jsonObject objectForKey:@"dataVersionFilters"];
@@ -951,7 +951,7 @@ static NSString * subscribe(NSString * params) {
    if (![eventPathsJson isEqual:[NSNull null]]) {
        eventPaths = [NSMutableArray array];
        for (NSUInteger i = 0; i < eventPathsJson.count; i++) {
-           NSDictionary * eventPath = eventPaths[i];
+           NSDictionary * eventPath = eventPathsJson[i];
            NSNumber * endpointId = [[eventPath objectForKey:@"endpointId"] objectForKey:@"id"];
            NSNumber * clusterId = [[eventPath objectForKey:@"clusterId"] objectForKey:@"id"];
            NSNumber * eventId = [[eventPath objectForKey:@"eventId"] objectForKey:@"id"];
@@ -1003,7 +1003,7 @@ static NSString * readRequest(NSString * params) {
     NSString *callbackId = requestJsonValueNotNull(jsonObject, @"callbackHandle");
     NSNumber *nodeId = requestJsonValueNotNull(jsonObject, @"nodeId");
     NSArray * attributePathsJson = [jsonObject objectForKey:@"attributePaths"];
-    NSArray * eventPathsJson = [jsonObject objectForKey:@"eventPathsJson"];
+    NSArray * eventPathsJson = [jsonObject objectForKey:@"eventPaths"];
     NSArray * dataVersionFiltersJson = [jsonObject objectForKey:@"dataVersionFilters"];
     NSNumber * isFabricFiltered = [jsonObject objectForKey:@"isFabricFiltered"];
     NSNumber * imTimeoutMs = [jsonObject objectForKey:@"imTimeoutMs"];
@@ -1032,7 +1032,7 @@ static NSString * readRequest(NSString * params) {
     if (![eventPathsJson isEqual:[NSNull null]]) {
         eventPaths = [NSMutableArray array];
         for (NSUInteger i = 0; i < eventPathsJson.count; i++) {
-            NSDictionary * eventPath = eventPaths[i];
+            NSDictionary * eventPath = eventPathsJson[i];
             NSNumber * endpointId = [[eventPath objectForKey:@"endpointId"] objectForKey:@"id"];
             NSNumber * clusterId = [[eventPath objectForKey:@"clusterId"] objectForKey:@"id"];
             NSNumber * eventId = [[eventPath objectForKey:@"eventId"] objectForKey:@"id"];

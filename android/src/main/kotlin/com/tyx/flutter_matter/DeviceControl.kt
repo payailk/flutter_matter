@@ -1,4 +1,4 @@
-package com.zengge.flutter_matter
+package com.tyx.flutter_matter
 
 import android.os.Looper
 import android.util.Log
@@ -1090,15 +1090,21 @@ fun read(params: String): String {
             eventPaths.add(mapChipEventPath(eventPathsJson.optJSONObject(i)))
         }
     }
-    var dataVersionFilters: ArrayList<chip.devicecontroller.model.DataVersionFilter>? = null
+    var dataVersionFilters: ArrayList<DataVersionFilter>? = null
     if (dataVersionFiltersJson != null && dataVersionFiltersJson != JSONObject.NULL) {
         dataVersionFilters = ArrayList()
         for (i in 0 until dataVersionFiltersJson.length()) {
             val obj = dataVersionFiltersJson.optJSONObject(i)
-            val endpointId = obj.optJSONObject("endpointId")?.optInt("id") ?: 0
-            val clusterId = obj.optJSONObject("clusterId")?.optInt("id") ?: 0
-            val dataVersion = obj.optInt("dataVersion", 0)
-            dataVersionFilters.add(chip.devicecontroller.model.DataVersionFilter.newInstance(endpointId, clusterId.toLong(), dataVersion.toLong()))
+            val endpointId = obj.optJSONObject("endpointId")
+            val clusterId = obj.optJSONObject("clusterId")
+            val dataVersion = obj.optLong("dataVersion")
+            dataVersionFilters.add(
+                DataVersionFilter.newInstance(
+                    ChipPathId.forId(endpointId.optLong("id")),
+                    ChipPathId.forId(clusterId.optLong("id")),
+                    dataVersion
+                )
+            )
         }
     }
     val reportCallback = object : ReportCallback {

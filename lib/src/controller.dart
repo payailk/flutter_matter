@@ -1151,6 +1151,38 @@ class ChipDeviceController implements MethodCallHandler {
     }
   }
 
+  /// Subscribes to the given attribute and/or event paths.
+  ///
+  /// This sets up an auto-resubscribing interaction for the specified paths.
+  /// Reports are delivered to [callback] as data is received and processed.
+  ///
+  /// [nodeId] is the target device node ID.
+  ///
+  /// [attributePaths] is the list of attribute paths to subscribe to.
+  ///
+  /// [eventPaths] is the list of event paths to subscribe to.
+  ///
+  /// [dataVersionFilters] is the list of data version filters used to suppress
+  /// unchanged cluster data. Currently this is supported on Android only.
+  ///
+  /// [minInterval] is the requested minimum reporting interval floor, in seconds.
+  ///
+  /// [maxInterval] is the requested maximum reporting interval ceiling, in seconds.
+  ///
+  /// If [keepSubscriptions] is `false`, all existing or pending subscriptions
+  /// on the publisher for this subscriber should be terminated.
+  ///
+  /// If [isFabricFiltered] is `true`, data inside fabric-scoped lists is limited
+  /// to the accessing fabric.
+  ///
+  /// [imTimeoutMs] overrides the default Interaction Model timeout in the native
+  /// layer when non-zero.
+  ///
+  /// [eventMin] filters queued events so only events with event numbers greater
+  /// than or equal to this value are reported.
+  ///
+  /// If provided, [connectContext] reuses an existing connected-device context
+  /// instead of resolving a new one for [nodeId].
   Future<void> subscribe(
     int nodeId, 
     SubscriptionCallback callback, 
@@ -1189,6 +1221,31 @@ class ChipDeviceController implements MethodCallHandler {
     }
   }
 
+  /// Reads the given attribute and/or event paths.
+  ///
+  /// Reports are delivered to [callback] once the read response has been
+  /// received and processed.
+  ///
+  /// [nodeId] is the target device node ID.
+  ///
+  /// [attributePaths] is the list of attribute paths to read.
+  ///
+  /// [eventPaths] is the list of event paths to read.
+  ///
+  /// [dataVersionFilters] is the list of data version filters used to suppress
+  /// unchanged cluster data. Currently this is supported on Android only.
+  ///
+  /// If [isFabricFiltered] is `true`, data inside fabric-scoped lists is limited
+  /// to the accessing fabric.
+  ///
+  /// [imTimeoutMs] overrides the default Interaction Model timeout in the native
+  /// layer when non-zero.
+  ///
+  /// [eventMin] filters queued events so only events with event numbers greater
+  /// than or equal to this value are returned.
+  ///
+  /// If provided, [connectContext] reuses an existing connected-device context
+  /// instead of resolving a new one for [nodeId].
   Future<void> read(
     int nodeId, 
     ReportCallback callback, 
